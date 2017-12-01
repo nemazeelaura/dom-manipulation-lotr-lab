@@ -19,7 +19,6 @@ var buddies = [
 var lands = ['The Shire', 'Rivendell', 'Mordor'];
 var body = document.querySelector('body');
 
-
 // Part 1
 
 
@@ -28,6 +27,20 @@ function makeMiddleEarth() {
   // inside, add each land as an article tag
   // inside each article tag include an h1 with the name of the land
   // append middle-earth to your document body
+  var middleEarth = document.createElement("section");
+  console.log(middleEarth);
+  middleEarth.setAttribute("id", "middleEarth");
+  console.log(middleEarth);
+  
+  for (var i = 0; i < lands.length; i++) {
+    var currentLand = document.createElement("article");
+    var name = document.createElement("h1");
+    middleEarth.appendChild(currentLand);
+    currentLand.appendChild(name);
+    name.textContent = lands[i];
+  }
+    // adding element to document.body
+    body.appendChild(middleEarth);
 }
 
 makeMiddleEarth();
@@ -38,9 +51,29 @@ makeMiddleEarth();
 function makeHobbits() {
   // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
+  var middleEarth = document.getElementById("middleEarth");
+  console.log(middleEarth);
+
+
+  for (var i = 0; i < hobbits.length; i ++) {
+
+    // getting the first child of middle earth
+    var shire = middleEarth.firstChild;
+    console.log(shire);
+    // create ul,
+    var hobbitList = document.createElement("ul");
+    console.log(hobbitList);
+    // create the shire (the shire is the first child of middleEarth) inside article tag 
+    shire.appendChild(hobbitList);
+    // give each hobbit the class name hobbit
+    hobbitList.textContent = hobbits[i];
+    console.log(hobbitList);
+    hobbits.setAttribute("class", "hobbit");
+    console.log(hobbits);
+  }
 }
 
-
+makeHobbits();
 // Part 3
 
 function keepItSecretKeepItSafe() {
