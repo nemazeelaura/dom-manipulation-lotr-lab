@@ -1,5 +1,4 @@
 console.log("Linked.");
-
 // Dramatis Personae
 var hobbits = [
   'Frodo Baggins',
@@ -28,10 +27,8 @@ function makeMiddleEarth() {
   // inside each article tag include an h1 with the name of the land
   // append middle-earth to your document body
   var middleEarth = document.createElement("section");
-  console.log(middleEarth);
   middleEarth.setAttribute("id", "middleEarth");
-  console.log(middleEarth);
-  
+
   for (var i = 0; i < lands.length; i++) {
     var currentLand = document.createElement("article");
     var name = document.createElement("h1");
@@ -45,67 +42,106 @@ function makeMiddleEarth() {
 
 makeMiddleEarth();
 
-
 // Part 2
 
 function makeHobbits() {
   // display an unordered list of hobbits in the shire (which is the first article tag on the page)
   // give each hobbit a class of hobbit
+  // getting the section tag middle earth by id
   var middleEarth = document.getElementById("middleEarth");
-  console.log(middleEarth);
-
+  // get the first child of middle earth h1- the shire
+  var shire = middleEarth.firstChild;
+  // .document refers to webpage create ul called hobbitlist
+  var hobbitList = document.createElement("ul");
+  // puts the ul under the shire h1.. another child
+  shire.appendChild(hobbitList);
 
   for (var i = 0; i < hobbits.length; i ++) {
 
-    // getting the first child of middle earth
-    var shire = middleEarth.firstChild;
-    console.log(shire);
-    // create ul,
-    var hobbitList = document.createElement("ul");
-    console.log(hobbitList);
-    // create the shire (the shire is the first child of middleEarth) inside article tag 
-    shire.appendChild(hobbitList);
-    // give each hobbit the class name hobbit
-    hobbitList.textContent = hobbits[i];
-    console.log(hobbitList);
-    hobbits.setAttribute("class", "hobbit");
-    console.log(hobbits);
+    var hobbit = document.createElement("li");
+    hobbitList.appendChild(hobbit);
+    hobbit.textContent = hobbits[i];
+    // giving each hobbit the class name hobbit
+    hobbit.setAttribute("class", "hobbit");
   }
+
+  // console.log(shire);
 }
 
 makeHobbits();
+
+
 // Part 3
 
 function keepItSecretKeepItSafe() {
   // create a div with an id of 'the-ring'
+  var ring = document.createElement("div");
+ 
+  ring.setAttribute("id", "the-ring");
+  // console.log(ring);
   // give the div a class of 'magic-imbued-jewelry'
+  ring.setAttribute("class", "magic-imbued-jewelry");
+  // console.log(ring);
   // add an event listener so that when a user clicks on the ring, the nazgulScreech function (provided) is invoked
+  // get hobbit from doc
   // add the ring as a child of Frodo
+  var frodo = document.querySelector('.hobbit');
+  // console.log(frodo);
+  frodo.addEventListener("click", nazgulScreech);
+  
 }
 
+keepItSecretKeepItSafe(); 
 
-// Part 4
+  
+  // Part 4
 
-
+                                                                
 function makeBuddies() {
-  // create an aside tag
-  // attach an unordered list of the 'buddies' in the aside
-  // insert your aside as a child element of rivendell
+
+  var middleEarth = document.getElementById("middleEarth");
+  var rivendell = middleEarth.childNodes[1]; // getting rivendell second child
+  // console.log(rivendell);
+  // create aside tag 
+  var sideTag = document.createElement("aside");
+  // add aside to rivendell
+  rivendell.appendChild(sideTag);  
+   // create ul tag
+  var buddieList = document.createElement("ul");
+  buddieList.setAttribute("id", "blist"); // added id to ul for beautiful stranger
+  // adding ul to aside
+  sideTag.appendChild(buddieList);   
+
+  for (var i = 0; i < buddies.length; i ++) {
+    var buddy = document.createElement("li");   
+    buddieList.appendChild(buddy);              // attach an unordered list of the 'buddies' in the aside
+    buddy.textContent = buddies[i];             // insert your aside as a child element of rivendell
+    buddy.setAttribute("class", "buddy");
+  }
+
+  // console.log(rivendell);
 }
+  
 
-
+makeBuddies();
 // Part 5
 
 
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
+  var buddieList = document.getElementById("blist");
+  var strider = buddieList.childNodes[3];
+  strider.innerHTML = "Aragorn";
 }
 
+beautifulStranger();
 
 // Part 6
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+
+    
 }
 
 
