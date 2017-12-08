@@ -140,10 +140,19 @@ beautifulStranger();
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
+   var newLocation = document.querySelectorAll(".hobbit");
+   console.log(newLocation);
+   // var rivendell = document.querySelectorAll("article")[0];
+   // console.log(rivendell);
+   var rivendellBuddies = document.getElementById("blist");
+   console.log(rivendellBuddies);
+   for (var i = 0; i < newLocation.length; i ++) {  
+    rivendellBuddies.appendChild(newLocation[i]);              // attach an unordered list of the 'buddies' in the aside
+  }
 
-    
+   
 }
-
+leaveTheShire();
 
 // Part 7
 
